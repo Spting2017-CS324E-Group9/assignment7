@@ -3,9 +3,11 @@ class game {
   String state;
   String character;
   timer clock;
+  score player_score;
   game () {
     state = "init";
     character = "none";
+    player_score = new score (300, 60, 50);
     clock = new timer (0, 6);
   }
   
@@ -33,7 +35,7 @@ class game {
       textAlign (CENTER);
       fill (127, 79, 191);
       textSize (40);
-      text ("Pick your character by pressing A, B, C, or D", 550, 350);
+      text ("Pick your character by pressing A, B, C, or D", 700, 400);
     } 
     else {
       this.state = "play";
@@ -48,13 +50,15 @@ class game {
       textAlign (CENTER);
       fill (53, 84, 175);
       textSize (40);
-      text ("You selected character " + this.character, 550, 350);
+      text ("You selected character " + this.character, 700, 400);
       
       textAlign (RIGHT);
       fill (53, 84, 175);
       textSize (30);
-      text ("clock:  " + str (this.clock.time_ellapsed), 1350, 100);
-      text ("to pause press p", 1350, 150);
+      text ("clock:  " + str (this.clock.time_ellapsed), 1350, 40);
+      text ("to pause press p", 1350, 70);
+      
+      this.player_score.display ();
       
       this.clock.update ();
     }
@@ -70,13 +74,13 @@ class game {
     textAlign (CENTER);
     fill (198, 38, 113);
     textSize (40);
-    text ("The game is paused", 550, 350);
+    text ("The game is paused", 700, 400);
     
     textAlign (RIGHT);
     fill (198, 38, 113);
     textSize (30);
-    text ("clock:  " + str (this.clock.time_ellapsed), 1350, 100);
-    text ("to play press p", 1350, 150);
+    text ("clock:  " + str (this.clock.time_ellapsed), 1350, 40);
+    text ("to play press p", 1350, 70);
   }
   
   
@@ -85,7 +89,7 @@ class game {
     textAlign (CENTER);
     fill (44, 173, 68);
     textSize (40);
-    text ("The game is over. If you would like to play again, press Q", 600, 350);
+    text ("The game is over. If you would like to play again, press Q", 700, 400);
   }
   
 
