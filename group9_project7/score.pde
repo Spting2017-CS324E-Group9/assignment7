@@ -40,7 +40,7 @@ class score {
     textAlign (LEFT);
     fill (53, 84, 175);
     textSize (30);
-    text ("score:  " + str (this.current), this.x, this.y - 10);
+    text ("CoolPoints:  " + str (this.current), this.x, this.y - 10);
     shape (this.meter);
   }
 
