@@ -19,9 +19,20 @@ void draw () {
 
 void keyPressed () {
   if (game_1.state == "init") {
-    if ((key == 'a') || (key == 'b') || (key == 'c') || (key == 'd')) {
-      game_1.character = str (key).toUpperCase ();
+    if ((key == 'a')) {
+      game_1.character = "Banana";
     }
+    else if ((key == 'b')) {
+      game_1.character = "Goku";
+    }
+    else if ((key == 'c')) {
+      game_1.character = "Sonic";
+    }
+     else if ((key == 'd')) {
+      game_1.character = "Aqua";
+    }
+    
+  }
   }
   else if ((game_1.state == "play") && (key == 'p')) {
     game_1.state = "pause";
