@@ -8,7 +8,12 @@ void setup () {
 
 
 void draw () {
-  game_1.run ();
+  if (game_1.state == "quit") {
+    exit ();
+  }
+  else {
+    game_1.run ();
+  }
 
 }
 
@@ -35,8 +40,14 @@ void keyPressed () {
     game_1.state = "play";
     game_1.clock.paused = false;
   }
-  else if ((game_1.state == "over") && (key == 'q')) {
+  else if ((game_1.state == "pause") && (key == 'q')) {
+    game_1.state = "quit";
+  }
+  else if ((game_1.state == "over") && (key == 'a')) {
     game_1.state = "init";
-    game_1.clock = new timer (millis (), 30);
+    game_1.clock = new timer (millis (), 6);
+  }
+  else if ((game_1.state == "over") && (key == 'q')) {
+    game_1.state = "quit";
   }
 }

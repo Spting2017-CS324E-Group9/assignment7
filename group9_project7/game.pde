@@ -10,7 +10,7 @@ class game {
     character = "none";
     command = "none";
     player_score = new score (300, 60, 50);
-    clock = new timer (0, 30);
+    clock = new timer (0, 6);
   }
   
   
@@ -69,7 +69,7 @@ class game {
       fill (53, 84, 175);
       textSize (30);
       text ("clock:  " + str (this.clock.time_ellapsed), 1350, 40);
-      text ("to pause press p", 1350, 70);
+      text ("to pause press P", 1350, 70);
       
       
       if (this.clock.time_ellapsed % 120 == 0) {
@@ -103,13 +103,13 @@ class game {
     textAlign (CENTER);
     fill (198, 38, 113);
     textSize (40);
-    text ("The game is paused", 700, 400);
+    text ("The game is paused \n To play, press P \n To quit, press Q", 700, 400);
     
     textAlign (RIGHT);
     fill (198, 38, 113);
     textSize (30);
     text ("clock:  " + str (this.clock.time_ellapsed), 1350, 40);
-    text ("to play press p", 1350, 70);
+    text ("to play press P", 1350, 70);
     
     this.player_score.display ();
   }
@@ -120,7 +120,7 @@ class game {
     textAlign (CENTER);
     fill (44, 173, 68);
     textSize (40);
-    text ("The game is over. If you would like to play again, press Q", 700, 400);
+    text ("The game is over. \n If you would like to play again, press A \n If you would like to quit, press Q", 700, 400);
   }
   
 
