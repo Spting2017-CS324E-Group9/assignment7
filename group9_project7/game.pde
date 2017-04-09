@@ -11,7 +11,7 @@ class game {
     character = "none";
     command = "none";
     player_score = new score (300, 60, 50);
-    clock = new timer (0, 6);
+    clock = new timer (0, 60);
     a1 = new Animation("Banana_",8);
     a2 = new Animation("Goku_",13);
     a3 = new Animation("Sonic_",8);

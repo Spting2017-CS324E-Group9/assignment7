@@ -3,6 +3,7 @@ class timer {
   int start_time, time_ellapsed, duration;
   boolean paused;
   boolean completed; 
+  String formatted_display;
   
   // The argument dur is in seconds, but the variables duration and time_ellapsed are in loops, i.e. seconds * 60
   timer (int st, int dur) {
@@ -11,6 +12,7 @@ class timer {
     start_time = st;
     duration = 60 * dur;
     time_ellapsed = 0;
+    //formatted_display = str (int (nf ((this.duration - this.time_ellapsed) % 3600, 2))) + ":" + 
   }
   
   void update () {
