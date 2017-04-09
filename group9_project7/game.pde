@@ -10,7 +10,7 @@ class game {
     state = "init";
     character = "none";
     command = "none";
-    player_score = new score (300, 60, 50);
+    player_score = new score (1200, 60, 50);
     clock = new timer (0, 60);
     a1 = new Animation("Banana_",8);
     a2 = new Animation("Goku_",13);

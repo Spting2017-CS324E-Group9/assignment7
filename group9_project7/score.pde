@@ -8,7 +8,8 @@ class score {
     max = m;
     x = ix;
     y = iy;
-    current = max / 3;
+    current = 0;
+    print (current);
     meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
     
     meter_outline = createShape (GROUP);
@@ -31,7 +32,7 @@ class score {
     meter_outline.addChild (outline_top);
     meter_outline.addChild (outline_bottom);
     
-    meter_fill = createShape (RECT, x + 5, y + 5, lerp (y + 5, 90, this.current / this.max), 20);
+    meter_fill = createShape (RECT, x + 5, y + 5, lerp (0, 90, this.current / this.max), 20);
     meter_fill.setFill (meter_color);
   }
   
@@ -41,7 +42,7 @@ class score {
       this.current = this.max;
     }
     this.meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
-    this.meter_fill = createShape (RECT, this.x + 5, this.y + 5, lerp (this.x + 5, 90, this.current / this.max), 20);
+    this.meter_fill = createShape (RECT, this.x + 5, this.y + 5, lerp (0, 90, this.current / this.max), 20);
     this.meter_fill.setFill (meter_color);
   }
   
