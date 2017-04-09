@@ -5,12 +5,17 @@ class game {
   timer clock;
   score player_score;
   String command;
+  Animation a1,a2,a3,a4;
   game () {
     state = "init";
     character = "none";
     command = "none";
     player_score = new score (300, 60, 50);
     clock = new timer (0, 6);
+    a1 = new Animation("Banana_",8);
+    a2 = new Animation("Goku_",13);
+    a3 = new Animation("Sonic_",8);
+    a4 = new Animation("Girl_",18);
   }
   
   
@@ -40,6 +45,10 @@ class game {
   void display_init () {
     if (this.character == "none") {
       background (0);
+      a1.display(200,400);
+      a2.display(500,400);
+      a3.display(800,400);
+      a4.display(1100,400);
       textAlign (CENTER);
       fill (127, 79, 191);
       textSize (40);
