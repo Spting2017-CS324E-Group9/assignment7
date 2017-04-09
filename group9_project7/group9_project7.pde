@@ -29,7 +29,7 @@ void keyPressed () {
   }
   // I can't get this score update to work
   else if ((game_1.state == "play") && (key == game_1.command.charAt (0))) {
-    game_1.player_score.update (1);
+    game_1.player_score.update (10);
   }
   else if ((game_1.state == "pause") && (key == 'p')) {
     game_1.state = "play";

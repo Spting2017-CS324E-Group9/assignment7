@@ -1,13 +1,15 @@
 class score {
 
   int max, current;
-  PShape meter;
+  PShape meter, meter_fill;
+  color meter_color;
   float x, y;
   score (int m, float ix, float iy) {
     max = m;
     x = ix;
     y = iy;
     current = max / 2;
+    meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
     
     meter = createShape (GROUP);
     PShape meter_outline = createShape (GROUP);
@@ -25,15 +27,23 @@ class score {
     outline_top.setStroke (false);
     outline_bottom.setStroke (false);
     
+    meter_fill = createShape (RECT, x + 5, y + 5, lerp (y + 5, 90, this.current / this.max), 20);
+    meter_fill.setFill (meter_color);
+    
     meter_outline.addChild (outline_left);
     meter_outline.addChild (outline_right);
     meter_outline.addChild (outline_top);
     meter_outline.addChild (outline_bottom);
+    meter.addChild (meter_fill);
     meter.addChild (meter_outline);
   }
   
   void update (int change) {
     this.current += change;
+    this.meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
+    this.meter_fill = createShape (RECT, x + 5, y + 5, lerp (y + 5, 90, this.current / this.max), 20);
+    this.meter_fill.setFill (meter_color);
+    this.meter.addChild (meter_fill);
   }
   
   void display () {
