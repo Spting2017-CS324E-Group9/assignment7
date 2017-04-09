@@ -45,14 +45,15 @@ class game {
   void display_init () {
     if (this.character == "none") {
       background (0);
-      a1.display(200,500);
-      a2.display(500,500);
-      a3.display(800,500);
-      a4.display(1100,500);
+      a1.display(100,300);
+      a2.display(400,300);
+      a3.display(700,300);
+      a4.display(1000,300);
       textAlign (CENTER);
       fill (127, 79, 191);
-      textSize (40);
-      text ("Pick your character by pressing A, B, C, or D", 700, 400);
+      textSize (60);
+      text ("Pick your character by pressing", 700, 100);
+      text ("      A             B           C              D      ",700,275);
     } 
     else {
       this.state = "play";
@@ -64,6 +65,21 @@ class game {
   void display_play () {
     if (this.clock.completed == false) {
       background (0);
+      if (this.character == "Banana") {
+        Banana.display(550,250);
+      }
+      else if (this.character == "Goku") {
+        
+        Goku.display(550,250);
+      }
+      else if (this.character == "Sonic") {
+        
+        Sonic.display(550,250);
+      }
+      else if (this.character == "Aqua") {
+       
+        Aqua.display(550,250);
+      }
       if (this.clock.time_ellapsed < 60) {
         textAlign (CENTER);
         fill (53, 84, 175);
