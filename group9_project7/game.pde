@@ -45,10 +45,10 @@ class game {
   void display_init () {
     if (this.character == "none") {
       background (0);
-      a1.display(200,400);
-      a2.display(500,400);
-      a3.display(800,400);
-      a4.display(1100,400);
+      a1.display(200,500);
+      a2.display(500,500);
+      a3.display(800,500);
+      a4.display(1100,500);
       textAlign (CENTER);
       fill (127, 79, 191);
       textSize (40);
