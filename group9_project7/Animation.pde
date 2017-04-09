@@ -11,7 +11,7 @@ class Animation {
       // Use nf() to number format 'i' into four digits
       String filename = imagePrefix + nf(i+1, 4) + ".gif";
       images[i] = loadImage(filename);
-      images[i].scale(4);
+      images[i].resize(200,200);
     }
   }
 
