@@ -8,7 +8,7 @@ class score {
     max = m;
     x = ix;
     y = iy;
-    current = 0;
+    current = max / 3;
     print (current);
     meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
     
