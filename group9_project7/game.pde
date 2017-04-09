@@ -37,6 +37,7 @@ class game {
     } 
     else {
       this.state = "play";
+      this.clock.paused = false;
     } 
   }
   
@@ -48,6 +49,13 @@ class game {
       fill (53, 84, 175);
       textSize (40);
       text ("You selected character " + this.character, 550, 350);
+      
+      textAlign (RIGHT);
+      fill (53, 84, 175);
+      textSize (30);
+      text ("clock:  " + str (this.clock.time_ellapsed), 1350, 100);
+      text ("to pause press p", 1350, 150);
+      
       this.clock.update ();
     }
     else {
@@ -63,6 +71,12 @@ class game {
     fill (198, 38, 113);
     textSize (40);
     text ("The game is paused", 550, 350);
+    
+    textAlign (RIGHT);
+    fill (198, 38, 113);
+    textSize (30);
+    text ("clock:  " + str (this.clock.time_ellapsed), 1350, 100);
+    text ("to play press p", 1350, 150);
   }
   
   

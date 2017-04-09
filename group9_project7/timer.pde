@@ -15,7 +15,7 @@ class timer {
   
   void update () {
     if ((this.paused == false) && (this.completed == false)) {
-      time_ellapsed += 1;
+      this.time_ellapsed += 1;
       if (this.time_ellapsed >= this.duration) {
         this.paused = true;
         this.completed = true;

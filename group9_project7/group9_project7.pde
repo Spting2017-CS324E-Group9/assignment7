@@ -15,7 +15,7 @@ void draw () {
 void keyPressed () {
   if (game_1.state == "init") {
     if ((key == 'a') || (key == 'b') || (key == 'c') || (key == 'd')) {
-      game_1.character = str (key);
+      game_1.character = str (key).toUpperCase ();
     }
   }
   else if ((game_1.state == "play") && (key == 'p')) {
