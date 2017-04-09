@@ -68,7 +68,7 @@ class game {
       textAlign (RIGHT);
       fill (53, 84, 175);
       textSize (30);
-      text ("clock:  " + str (this.clock.time_ellapsed), 1350, 40);
+      text ("clock:  " + str (this.clock.duration - this.clock.time_ellapsed), 1350, 40);
       text ("to pause press P", 1350, 70);
       
       
@@ -108,7 +108,7 @@ class game {
     textAlign (RIGHT);
     fill (198, 38, 113);
     textSize (30);
-    text ("clock:  " + str (this.clock.time_ellapsed), 1350, 40);
+    text ("clock:  " + str (this.clock.duration - this.clock.time_ellapsed), 1350, 40);
     text ("to play press P", 1350, 70);
     
     this.player_score.display ();
