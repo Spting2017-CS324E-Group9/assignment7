@@ -1,7 +1,7 @@
 class score {
 
   int max, current;
-  PShape meter, meter_fill;
+  PShape meter_outline, meter_fill;
   color meter_color;
   float x, y;
   score (int m, float ix, float iy) {
@@ -11,8 +11,7 @@ class score {
     current = max / 2;
     meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
     
-    meter = createShape (GROUP);
-    PShape meter_outline = createShape (GROUP);
+    meter_outline = createShape (GROUP);
     PShape outline_left = createShape (RECT, x, y, 5, 30);
     PShape outline_right = createShape (RECT, x + 95, y, 5, 30);
     PShape outline_top = createShape (RECT, x, y, 100, 5);
@@ -27,23 +26,20 @@ class score {
     outline_top.setStroke (false);
     outline_bottom.setStroke (false);
     
-    meter_fill = createShape (RECT, x + 5, y + 5, lerp (y + 5, 90, this.current / this.max), 20);
-    meter_fill.setFill (meter_color);
-    
     meter_outline.addChild (outline_left);
     meter_outline.addChild (outline_right);
     meter_outline.addChild (outline_top);
     meter_outline.addChild (outline_bottom);
-    meter.addChild (meter_fill);
-    meter.addChild (meter_outline);
+    
+    meter_fill = createShape (RECT, x + 5, y + 5, lerp (y + 5, 90, this.current / this.max), 20);
+    meter_fill.setFill (meter_color);
   }
   
   void update (int change) {
     this.current += change;
     this.meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
-    this.meter_fill = createShape (RECT, x + 5, y + 5, lerp (y + 5, 90, this.current / this.max), 20);
+    this.meter_fill = createShape (RECT, this.x + 5, this.y + 5, lerp (this.x + 5, 90, this.current / this.max), 20);
     this.meter_fill.setFill (meter_color);
-    this.meter.addChild (meter_fill);
   }
   
   void display () {
@@ -51,7 +47,9 @@ class score {
     fill (53, 84, 175);
     textSize (30);
     text ("CoolPoints:  " + str (this.current), this.x, this.y - 10);
-    shape (this.meter);
+    shape (this.meter_fill);
+    shape (this.meter_outline);
+    
   }
 
 
