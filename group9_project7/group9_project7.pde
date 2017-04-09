@@ -28,13 +28,8 @@ void keyPressed () {
     game_1.clock.paused = true;
   }
   // I can't get this score update to work
-  else if (game_1.state == "play") {
-    print (key + " : " + game_1.command + "\n");
-    print ("score:  " + game_1.player_score.current + "\n");
-    if (str (key) == game_1.command) {
-      print (game_1.player_score.current + "\n");
-      game_1.player_score.update (5);
-    }
+  else if ((game_1.state == "play") && (key == game_1.command.charAt (0))) {
+    game_1.player_score.update (1);
   }
   else if ((game_1.state == "pause") && (key == 'p')) {
     game_1.state = "play";
