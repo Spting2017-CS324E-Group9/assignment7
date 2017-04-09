@@ -1,9 +1,27 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 game game_1;
+
+// Dennis{
+Minim minim; 
+AudioPlayer mySound;
+BeatDetect beat;
+BeatListener bl;
+// }Dennis
 
 void setup () {
   size (1400, 800);
   game_1 = new game ();
 
+  // Dennis{
+  minim = new Minim(this);   
+  mySound = minim.loadFile("Epic_Sax_Guy.mp3");
+  // }Dennis
 }
 
 
@@ -21,21 +39,48 @@ void keyPressed () {
   if (game_1.state == "init") {
     if ((key == 'a')) {
       game_1.character = "Banana";
+      //Dennis{
+      this.mySound.play();
+      this.beat = new BeatDetect();
+      this.beat.setSensitivity(400);
+      this.bl = new BeatListener(beat, mySound); 
+      // }Dennis
     }
     else if ((key == 'b')) {
       game_1.character = "Goku";
+      //Dennis{
+      this.mySound.play();
+      this.beat = new BeatDetect();
+      this.beat.setSensitivity(400);
+      this.bl = new BeatListener(beat, mySound); 
+      // }Dennis
     }
     else if ((key == 'c')) {
       game_1.character = "Sonic";
+      //Dennis{
+      this.mySound.play();
+      this.beat = new BeatDetect();
+      this.beat.setSensitivity(400);
+      this.bl = new BeatListener(beat, mySound); 
+      // }Dennis
     }
      else if ((key == 'd')) {
       game_1.character = "Aqua";
+      //Dennis{
+      this.mySound.play();
+      this.beat = new BeatDetect();
+      this.beat.setSensitivity(400);
+      this.bl = new BeatListener(beat, mySound); 
+      // }Dennis
     }
     
   }
   }
   else if ((game_1.state == "play") && (key == 'p')) {
     game_1.state = "pause";
+    // Dennis{
+    mySound.pause();
+    // }Dennis
     game_1.clock.paused = true;
   }
   // I can't get this score update to work
@@ -44,6 +89,9 @@ void keyPressed () {
   }
   else if ((game_1.state == "pause") && (key == 'p')) {
     game_1.state = "play";
+    // Dennis{
+    mySound.play();
+    // }Dennis
     game_1.clock.paused = false;
   }
   else if ((game_1.state == "pause") && (key == 'q')) {
