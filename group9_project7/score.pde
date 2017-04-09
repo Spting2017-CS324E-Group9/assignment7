@@ -1,6 +1,6 @@
 class score {
 
-  int max, current;
+  float max, current;
   PShape meter_outline, meter_fill;
   color meter_color;
   float x, y;
@@ -8,7 +8,7 @@ class score {
     max = m;
     x = ix;
     y = iy;
-    current = max / 2;
+    current = max / 3;
     meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
     
     meter_outline = createShape (GROUP);
@@ -37,6 +37,9 @@ class score {
   
   void update (int change) {
     this.current += change;
+    if (this.current >= this.max) {
+      this.current = this.max;
+    }
     this.meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
     this.meter_fill = createShape (RECT, this.x + 5, this.y + 5, lerp (this.x + 5, 90, this.current / this.max), 20);
     this.meter_fill.setFill (meter_color);
@@ -46,7 +49,7 @@ class score {
     textAlign (LEFT);
     fill (53, 84, 175);
     textSize (30);
-    text ("CoolPoints:  " + str (this.current), this.x, this.y - 10);
+    text ("CoolPoints:  " + str (int (this.current)), this.x, this.y - 10);
     shape (this.meter_fill);
     shape (this.meter_outline);
     
