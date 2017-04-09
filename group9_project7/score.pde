@@ -2,14 +2,12 @@ class score {
 
   int max, current;
   PShape meter;
-  String score_string;
   float x, y;
   score (int m, float ix, float iy) {
     max = m;
     x = ix;
     y = iy;
     current = max / 2;
-    score_string = "score:  " + str (this.current);
     
     meter = createShape (GROUP);
     PShape meter_outline = createShape (GROUP);
@@ -42,7 +40,7 @@ class score {
     textAlign (LEFT);
     fill (53, 84, 175);
     textSize (30);
-    text (this.score_string, this.x, this.y - 10);
+    text ("score:  " + str (this.current), this.x, this.y - 10);
     shape (this.meter);
   }
 

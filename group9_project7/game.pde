@@ -4,18 +4,19 @@ class game {
   String character;
   timer clock;
   score player_score;
+  String command;
   game () {
     state = "init";
     character = "none";
+    command = "none";
     player_score = new score (300, 60, 50);
-    clock = new timer (0, 6);
+    clock = new timer (0, 30);
   }
   
   
   void run () {
     if (this.state == "init") {
-      this.display_init ();  
-    
+      this.display_init ();
     }
     else if (this.state == "play") {
        this.display_play (); 
@@ -26,6 +27,13 @@ class game {
     else if (this.state == "over") {
       this.display_over ();
     }
+  }
+  
+  void display_command () {
+    textAlign (CENTER);
+    fill (53, 84, 175);
+    textSize (40);
+    text ("Press " + this.command.toUpperCase () + " to increase score", 700, 400);
   }
   
   
@@ -47,10 +55,15 @@ class game {
   void display_play () {
     if (this.clock.completed == false) {
       background (0);
-      textAlign (CENTER);
-      fill (53, 84, 175);
-      textSize (40);
-      text ("You selected character " + this.character, 700, 400);
+      if (this.clock.time_ellapsed < 60) {
+        textAlign (CENTER);
+        fill (53, 84, 175);
+        textSize (40);
+        text ("You selected character " + this.character, 700, 400);
+      }
+      else {
+        this.display_command ();
+      }
       
       textAlign (RIGHT);
       fill (53, 84, 175);
@@ -58,8 +71,24 @@ class game {
       text ("clock:  " + str (this.clock.time_ellapsed), 1350, 40);
       text ("to pause press p", 1350, 70);
       
-      this.player_score.display ();
       
+      if (this.clock.time_ellapsed % 120 == 0) {
+        int r = int (random (4));
+        if (r == 0) {
+          this.command = "w";
+        }
+        else if (r == 1) {
+          this.command = "a";
+        }
+        else if (r == 2) {
+          this.command = "s";
+        }
+        else if (r == 3) {
+          this.command = "d";
+        }
+      }
+      
+      this.player_score.display ();
       this.clock.update ();
     }
     else {
@@ -81,6 +110,8 @@ class game {
     textSize (30);
     text ("clock:  " + str (this.clock.time_ellapsed), 1350, 40);
     text ("to play press p", 1350, 70);
+    
+    this.player_score.display ();
   }
   
   
