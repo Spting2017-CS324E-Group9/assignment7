@@ -159,10 +159,6 @@ void keyPressed () {
   else if ((game_1.state == "pause") && (key == 'q')) {
     game_1.state = "quit";
   }
-  else if ((game_1.state == "over") && (key == 'a')) {
-    game_1.state = "init";
-    game_1.clock = new timer (millis (), 60);
-  }
   else if ((game_1.state == "over") && (key == 'q')) {
     game_1.state = "quit";
   }

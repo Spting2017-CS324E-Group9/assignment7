@@ -34,7 +34,7 @@ class game {
     character = "none";
     command = ' ';
     player_score = new score (1200, 60, 50);
-    clock = new timer (0, 60);
+    clock = new timer (0, 212);
     a1 = new Animation("Banana_",8);
     a2 = new Animation("Goku_",13);
     a3 = new Animation("Sonic_",8);
@@ -206,7 +206,7 @@ class game {
     textAlign (CENTER);
     fill (44, 173, 68);
     textSize (40);
-    text ("The game is over. \n If you would like to play again, press A \n If you would like to quit, press Q", 700, 400);
+    text ("The game is over. \n To quit, press Q", 700, 400);
   }
   
 
