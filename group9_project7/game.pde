@@ -16,7 +16,7 @@ class game {
   color circle_colorW = color(250);
   color circle_colorS = color(250);
   color circle_colorD = color(250);
-  
+  Animation c;
   String state;
   String character;
   timer clock;
@@ -111,8 +111,27 @@ class game {
   void display_play () {
     if (this.clock.completed == false) {
       background (0);
-      
-      
+      if (this.character == "Banana"){
+        background(34,177,76);
+        a1.display(550,250);
+        c=a1;
+      }
+      else if (this.character == "Goku"){
+        background(128,0,128);
+        a2.display(550,250);
+        c=a2;
+        
+      }
+      else if (this.character == "Sonic"){
+        background(34,177,76);
+        a3.display(550,250);
+        c=a3;
+      }
+      else if (this.character == "Aqua"){
+        background(255,0,255);
+        a4.display(550,250);
+        c=a4;
+      }
       
       if (this.clock.time_ellapsed < 60) {
         textAlign (CENTER);

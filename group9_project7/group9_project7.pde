@@ -77,6 +77,7 @@ void keyPressed () {
   // I can't get this score update to work
   else if ((game_1.state == "play") && (key == Character.toLowerCase(game_1.Letters.get(0).command)) && (game_1.Letters.get(0).letter_in_circle())) {
     //print("Key Pressed"+key);
+    game_1.c.cont = true;
     if(game_1.Letters.get(0).command == 'A'){
       //print("A");
       noStroke();
@@ -124,6 +125,7 @@ void keyPressed () {
     game_1.player_score.update (10);
   }
   else if( (game_1.state == "play") && ( (key != Character.toLowerCase(game_1.Letters.get(0).command)) || !(game_1.Letters.get(0).letter_in_circle()) ) ){
+    game_1.c.cont = false;
     if(key=='a'){
       noStroke();
       fill(250,0,0);
