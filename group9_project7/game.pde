@@ -11,6 +11,7 @@ class game {
   letter letter;
   ArrayList<letter> Letters = new ArrayList<letter>();
   int i=0;
+  int r, prev_r;
   //boolean foundLetter = false;
   color circle_colorA = color(250);
   color circle_colorW = color(250);
@@ -29,6 +30,8 @@ class game {
     this.mySound = _mySound;
     this.beat = _beat;
     this.bl = _bl;
+    r = 10;
+    prev_r = 10;
     
     state = "init";
     character = "none";
@@ -169,7 +172,10 @@ class game {
       text ("press P to pause", 1350, 70);
       
       if(this.beat.isOnset()){
-        int r = int (random (4));
+        r = int (random (4));
+        while (prev_r == r) {
+          r = int (random (4));
+        }
         if (r == 0) {
           this.command = 'W';
           this.Letters.add(new letter(this.command,this.i));
@@ -190,6 +196,7 @@ class game {
           this.Letters.add(new letter(this.command,this.i));
           i+=1;        
         }
+        prev_r = r;
       }
       
       this.player_score.display ();
@@ -210,6 +217,7 @@ class game {
       if (this.player_score.current < 0) {
         this.state = "fail";
       }
+      
     }
     else {
       this.character = "none";

@@ -45,7 +45,6 @@ void draw () {
 }
 
 void keyPressed () {
-  //print(key);
   
   if (game_1.state == "init") {
     if ((key == 'a')) {
@@ -76,18 +75,12 @@ void keyPressed () {
     game_1.clock.paused = true;
   }
   
-  
-  //// I can't get this score update to work
-  //else if ((game_1.state == "play") && (key == game_1.command.charAt (0))) {
-  //  game_1.player_score.update (10);
-  //}
 
-  // I can't get this score update to work
   else if ((game_1.state == "play") && (key == Character.toLowerCase(game_1.Letters.get(0).command)) && (game_1.Letters.get(0).letter_in_circle())) {
-    //print("Key Pressed"+key);
+
     game_1.c.cont = true;
     if(game_1.Letters.get(0).command == 'A'){
-      //print("A");
+
       noStroke();
       fill(0,250,0);
       ellipse(50,700,78,78);
@@ -98,7 +91,6 @@ void keyPressed () {
       text("Awesome!",170,200);
     }
     else if(game_1.Letters.get(0).command == 'W'){
-      //print("W");
       noStroke();
       fill(0,250,0);
       ellipse(130,700,78,78);
@@ -109,7 +101,6 @@ void keyPressed () {
       text("Incredible!",170,200);
     }
     else if(game_1.Letters.get(0).command == 'S'){
-      //print("S");
       noStroke();
       fill(0,250,0);
       ellipse(210,700,78,78);
@@ -120,7 +111,6 @@ void keyPressed () {
       text("WOW!",170,200);
     }
     else if(game_1.Letters.get(0).command == 'D'){
-      //print("D");
       noStroke();
       fill(0,250,0);
       ellipse(290,700,78,78);
