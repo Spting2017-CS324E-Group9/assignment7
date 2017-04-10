@@ -59,6 +59,9 @@ class game {
     else if (this.state == "over") {
       this.display_over ();
     }
+    else if (this.state == "fail") {
+      this.display_fail ();
+    }
   }
   
   void display_command () {
@@ -103,6 +106,7 @@ class game {
       text ("EXTREME", 1150, 675);
     } 
     else {
+      this.c.cont=false;
       this.state = "play";
       this.clock.paused = false;
       this.mySound.play();
@@ -199,20 +203,18 @@ class game {
         if(Letters.get(0).y>740){
           Letters.remove(0);
           this.player_score.update(-10);
+          this.c.cont=false;
         }
+       
       }
-      
-
-      
-      
+      if (this.player_score.current < 0) {
+        this.state = "fail";
+      }
     }
     else {
       this.character = "none";
       this.state = "over";
     }
-    
-
-
   }
   
   
@@ -240,12 +242,17 @@ class game {
     textAlign (CENTER);
     fill (44, 173, 68);
     textSize (40);
-    text ("The game is over. \n To quit, press Q", 700, 400);
+    text ("YOU NEVER GAVE US UP! \n You score was: "+str(int(this.player_score.current))+ " CoolPoints \n To quit, press Q", 700, 400);
   }
   
-
-  
-
+  void display_fail () {
+    this.mySound.rewind();
+    background (0);
+    textAlign (CENTER);
+    fill (44, 173, 68);
+    textSize (40);
+    text ("YOU LET US DOWN! \n To quit, press Q", 700, 400);
+  }
   
   // Dennis{
   void stop()

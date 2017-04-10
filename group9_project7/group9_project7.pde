@@ -50,15 +50,23 @@ void keyPressed () {
   if (game_1.state == "init") {
     if ((key == 'a')) {
       game_1.character = "Banana";
+      game_1.c = game_1.a1;
+      game_1.c.cont = false;
     }
     else if ((key == 'b')) {
       game_1.character = "Goku";
+      game_1.c = game_1.a2;
+      game_1.c.cont = false;
     }
     else if ((key == 'c')) {
       game_1.character = "Sonic";
+      game_1.c = game_1.a3;
+      game_1.c.cont = false;
     }
      else if ((key == 'd')) {
       game_1.character = "Aqua";
+      game_1.c = game_1.a1;
+      game_1.c.cont = false;
     }
     
   }

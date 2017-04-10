@@ -23,7 +23,7 @@ class Animation {
       }
       image(images[frame], xpos, ypos);
     }
-    else {image(images[0],xpos,ypos);
+    else {image(images[frame],xpos,ypos);
     }
   }  
 }
