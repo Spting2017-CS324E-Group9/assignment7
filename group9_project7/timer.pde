@@ -12,7 +12,7 @@ class timer {
     start_time = st;
     duration = 60 * dur;
     time_ellapsed = 0;
-    formatted_display = str (int (nf ((this.duration - this.time_ellapsed) % 3600, 2))) + ":" + str (int (nf ((this.duration - this.time_ellapsed) % 60, 2)));
+    //formatted_display = str (int (nf ((this.duration - this.time_ellapsed) % 3600, 2))) + ":" + 
   }
   
   void update () {

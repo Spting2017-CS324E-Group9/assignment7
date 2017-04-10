@@ -1,21 +1,48 @@
 class game {
+  
+  Minim minim; 
+  AudioPlayer mySound;
+  BeatDetect beat;
+  BeatListener bl;
 
+
+  
+  //letter[] Letters;
+  letter letter;
+  ArrayList<letter> Letters = new ArrayList<letter>();
+  int i=0;
+  //boolean foundLetter = false;
+  color circle_colorA = color(250);
+  color circle_colorW = color(250);
+  color circle_colorS = color(250);
+  color circle_colorD = color(250);
+  
   String state;
   String character;
   timer clock;
   score player_score;
-  String command;
+  char command;
   Animation a1,a2,a3,a4;
-  game () {
+  game (Minim _minim, AudioPlayer _mySound, BeatDetect _beat, BeatListener _bl) {
+    
+    this.minim = _minim; 
+    this.mySound = _mySound;
+    this.beat = _beat;
+    this.bl = _bl;
+    
     state = "init";
     character = "none";
-    command = "none";
+    command = ' ';
     player_score = new score (1200, 60, 50);
     clock = new timer (0, 60);
     a1 = new Animation("Banana_",8);
     a2 = new Animation("Goku_",13);
     a3 = new Animation("Sonic_",8);
     a4 = new Animation("Girl_",18);
+    
+
+
+
   }
   
   
@@ -36,9 +63,25 @@ class game {
   
   void display_command () {
     textAlign (CENTER);
-    fill (53, 84, 175);
-    textSize (40);
-    text ("Press " + this.command.toUpperCase () + " to increase score", 700, 400);
+    textSize(30);
+    noFill();
+    stroke(circle_colorA);
+    ellipse(50,700,80,80);
+    text("A",50,780);
+    
+    stroke(circle_colorW);
+    ellipse(130,700,80,80);
+    text("W",130,780);
+    
+    stroke(circle_colorS);
+    ellipse(210,700,80,80);
+    text("S",210,780);
+    
+    stroke(circle_colorD);
+    ellipse(290,700,80,80);
+    text("D",290,780);
+    
+
   }
   
   
@@ -58,28 +101,19 @@ class game {
     else {
       this.state = "play";
       this.clock.paused = false;
+      this.mySound.play();
+      this.beat = new BeatDetect();
+      this.beat.setSensitivity(1400);
+      this.bl = new BeatListener(beat, mySound); 
     } 
   }
-  
-  
+
   void display_play () {
     if (this.clock.completed == false) {
       background (0);
-      if (this.character == "Banana") {
-        Banana.display(550,250);
-      }
-      else if (this.character == "Goku") {
-        
-        Goku.display(550,250);
-      }
-      else if (this.character == "Sonic") {
-        
-        Sonic.display(550,250);
-      }
-      else if (this.character == "Aqua") {
-       
-        Aqua.display(550,250);
-      }
+      
+      
+      
       if (this.clock.time_ellapsed < 60) {
         textAlign (CENTER);
         fill (53, 84, 175);
@@ -89,41 +123,69 @@ class game {
       else {
         this.display_command ();
       }
-      
+      this.mySound.play();
       textAlign (RIGHT);
       fill (53, 84, 175);
       textSize (30);
       text ("clock:  " + str (this.clock.duration - this.clock.time_ellapsed), 1350, 40);
       text ("to pause press P", 1350, 70);
       
-      
-      if (this.clock.time_ellapsed % 120 == 0) {
+      if(this.beat.isOnset()){
+      //if(this.beat.isKick()){
+      //if (this.clock.time_ellapsed % 120 == 0) {
         int r = int (random (4));
         if (r == 0) {
-          this.command = "w";
+          this.command = 'W';
+          this.Letters.add(new letter(this.command,this.i));
+          i+=1;
         }
         else if (r == 1) {
-          this.command = "a";
+          this.command = 'A';
+          this.Letters.add(new letter(this.command,this.i));
+          i+=1;        
         }
         else if (r == 2) {
-          this.command = "s";
+          this.command = 'S';
+          this.Letters.add(new letter(this.command,this.i));
+          i+=1;        
         }
         else if (r == 3) {
-          this.command = "d";
+          this.command = 'D';
+          this.Letters.add(new letter(this.command,this.i));
+          i+=1;        
         }
       }
       
       this.player_score.display ();
       this.clock.update ();
+      
+      if(!Letters.isEmpty()){
+        for(int j=0; j<Letters.size();j++){
+           Letters.get(j).drop_letter();
+          
+        }
+        if(Letters.get(0).y>740){
+          Letters.remove(0);
+          this.player_score.update(-10);
+        }
+      }
+      
+
+      
+      
     }
     else {
       this.character = "none";
       this.state = "over";
     }
+    
+
+
   }
   
   
   void display_paused () {
+    this.mySound.pause();
     background (0);
     textAlign (CENTER);
     fill (198, 38, 113);
@@ -141,12 +203,29 @@ class game {
   
   
   void display_over () {
+    this.mySound.rewind();
     background (0);
     textAlign (CENTER);
     fill (44, 173, 68);
     textSize (40);
     text ("The game is over. \n If you would like to play again, press A \n If you would like to quit, press Q", 700, 400);
   }
+  
+
+  
+
+  
+  // Dennis{
+  void stop()
+  {
+    // always close Minim audio classes when you are finished with them
+    mySound.close();
+    // always stop Minim before exiting
+    minim.stop();
+    // this closes the sketch
+    this.stop();
+  }
+  // }Dennis
   
 
 }
