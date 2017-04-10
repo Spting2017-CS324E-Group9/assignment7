@@ -44,6 +44,7 @@ class score {
     this.meter_color = color (lerp (229, 27, this.current / this.max), lerp (14, 203, this.current / this.max), lerp (2, 25, this.current / this.max));
     this.meter_fill = createShape (RECT, this.x + 5, this.y + 5, lerp (0, 90, this.current / this.max), 20);
     this.meter_fill.setFill (meter_color);
+    this.meter_fill.setStroke (false);
   }
   
   void display () {

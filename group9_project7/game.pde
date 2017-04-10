@@ -128,11 +128,9 @@ class game {
       fill (53, 84, 175);
       textSize (30);
       text ("clock:  " + str (this.clock.duration - this.clock.time_ellapsed), 1350, 40);
-      text ("to pause press P", 1350, 70);
+      text ("press P to pause", 1350, 70);
       
       if(this.beat.isOnset()){
-      //if(this.beat.isKick()){
-      //if (this.clock.time_ellapsed % 120 == 0) {
         int r = int (random (4));
         if (r == 0) {
           this.command = 'W';
@@ -196,7 +194,7 @@ class game {
     fill (198, 38, 113);
     textSize (30);
     text ("clock:  " + str (this.clock.duration - this.clock.time_ellapsed), 1350, 40);
-    text ("to play press P", 1350, 70);
+    text ("press P to play", 1350, 70);
     
     this.player_score.display ();
   }
