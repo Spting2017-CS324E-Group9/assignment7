@@ -96,14 +96,29 @@ class game {
       fill (127, 79, 191);
       textSize (60);
       text ("Pick your character by pressing", 700, 100);
-      text ("      A             B           C              D      ",700,275);
+      text ("      A             B            C              D      ",700,275);
+      text ("EASY", 250, 675);
+      text ("MEDIUM", 550, 675);
+      text ("HARD", 850, 675);
+      text ("EXTREME", 1150, 675);
     } 
     else {
       this.state = "play";
       this.clock.paused = false;
       this.mySound.play();
       this.beat = new BeatDetect();
-      this.beat.setSensitivity(1400);
+      if (this.character == "Banana") {
+        this.beat.setSensitivity(1500);
+      }
+      else if (this.character == "Goku") {
+        this.beat.setSensitivity(1300);
+      }
+      else if (this.character == "Sonic") {
+        this.beat.setSensitivity(1100);
+      }
+      else if (this.character == "Aqua") {
+        this.beat.setSensitivity(900);
+      }
       this.bl = new BeatListener(beat, mySound); 
     } 
   }
