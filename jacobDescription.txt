@@ -1,0 +1,1 @@
+Jacob was responsible for the Animation class, the display of the sprites, the starting and stopping of the sprites on right and wrong notes, and the init screen.
