@@ -1,8 +1,0 @@
-This project is a dance game. The win condition is ?? The lose condition is ?? This game includes a pause screen and animated sprites.
-
-
-Dennis was responsible for ??
-
-Chris was responsible for ??
-
-Jacob was responsible for ??
