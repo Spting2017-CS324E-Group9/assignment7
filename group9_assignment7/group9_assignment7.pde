@@ -31,9 +31,7 @@ void draw () {
   else {
     game_1.run();
   }
-  if (frameCount % 30 == 0) {
-    saveFrame ("frame#######.png");
-  }
+ 
 }
 
 void keyPressed () {
