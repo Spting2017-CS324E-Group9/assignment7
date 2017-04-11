@@ -5,18 +5,13 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-// Dennis{
+
 Minim minim; 
 AudioPlayer mySound;
 BeatDetect beat;
 BeatListener bl;
-// }Dennis
 
 game game_1;
-
-
-
-
 
 
 void setup () {
@@ -36,7 +31,9 @@ void draw () {
   else {
     game_1.run();
   }
-
+  if (frameCount % 30 == 0) {
+    saveFrame ("frame#######.png");
+  }
 }
 
 void keyPressed () {
